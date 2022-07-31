@@ -1,0 +1,98 @@
+import React, { useEffect, useState } from "react";
+
+import Error from "./components/Error"
+import MissionStart from "./pages/MissionStart";
+import DateClue from "./pages/DateClue";
+import VIPClue from "./pages/VIPClue";
+import FlightsClue from "./pages/FlightsClue";
+import OperativeClue from "./pages/OperativeClue";
+import LocationClue from "./pages/LocationClue";
+import Details from "./pages/Details";
+
+import 'bootstrap/dist/css/bootstrap.css';
+import { withFirebase } from "vtr-react-components/dist/Firebase";
+import { getDoc, setDoc } from "firebase/firestore";
+import Loader from "./components/Loader";
+import PageBlocked from "./components/PageBlocked";
+
+const AppBase = ({ firebase }) => {
+  const [ loading, setLoading ] = useState(true);
+  const [ config, setConfig ] = useState(null)
+
+  useEffect(() => {
+    setLoading(true);
+
+    async function loadData() {
+      const filipaDoc = await getDoc(firebase.config("filipa"));
+
+      if (filipaDoc.exists) {
+        const data = filipaDoc.data();
+
+        setConfig(data);
+      }
+    }
+
+    loadData().then(() => {
+      setLoading(false);
+    });
+  }, [ firebase ]);
+
+  const changeStage = async (stage) => {
+    await setDoc(firebase.config("filipa"), {
+      stage: stage
+    }, { merge: true });
+    config["stage"] = stage;
+    window.location.reload(false);
+  }
+
+  const changeLocalConfig = async (configKey, configValue) => {
+    config["localConfig"][`${ config["stage"] }`][`${ configKey }`] = configValue;
+    await setDoc(firebase.config("filipa"), config, { merge: true });
+    window.location.reload(false);
+  }
+
+  if (loading) {
+    return ( <Loader opacity={ 100 }/> )
+  }
+
+  if (new Date(Date.now()) <=
+      config["localConfig"][`${ config["stage"] }`]["startDate"].toDate() &&
+      !config["testing"]) {
+    return ( <PageBlocked date={ config["localConfig"][`${ config["stage"] }`]["startDate"].toDate() }/> )
+  }
+
+  switch (config["stage"]) {
+    case "start":
+      return <MissionStart localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                           changeStage={ changeStage }
+                           changeLocalConfig={ changeLocalConfig }/>
+    case "one":
+      return <DateClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                       changeStage={ changeStage }
+                       changeLocalConfig={ changeLocalConfig }/>
+    case "two":
+      return <VIPClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                      changeStage={ changeStage }
+                      changeLocalConfig={ changeLocalConfig }/>
+    case "three":
+      return <FlightsClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                          changeStage={ changeStage }
+                          changeLocalConfig={ changeLocalConfig }/>
+    case "four":
+      return <OperativeClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                            changeStage={ changeStage }
+                            changeLocalConfig={ changeLocalConfig }/>
+    case "finale":
+      return <LocationClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                           changeStage={ changeStage }
+                           changeLocalConfig={ changeLocalConfig }/>
+    case "details":
+      return <Details/>
+    default:
+      return <Error/>
+  }
+}
+
+const App = withFirebase(AppBase)
+
+export default App;
