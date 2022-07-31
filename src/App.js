@@ -14,10 +14,12 @@ import { withFirebase } from "vtr-react-components/dist/Firebase";
 import { getDoc, setDoc } from "firebase/firestore";
 import Loader from "./components/Loader";
 import PageBlocked from "./components/PageBlocked";
+import Authenticate from "./components/Authenticate";
 
 const AppBase = ({ firebase }) => {
   const [ loading, setLoading ] = useState(true);
-  const [ config, setConfig ] = useState(null)
+  const [ config, setConfig ] = useState(null);
+  const [ authenticated, setAuthenticated ] = useState(false);
 
   useEffect(() => {
     setLoading(true);
@@ -35,6 +37,8 @@ const AppBase = ({ firebase }) => {
     loadData().then(() => {
       setLoading(false);
     });
+
+    setAuthenticated(localStorage.getItem("authenticated") === "true");
   }, [ firebase ]);
 
   const changeStage = async (stage) => {
@@ -53,6 +57,10 @@ const AppBase = ({ firebase }) => {
 
   if (loading) {
     return ( <Loader opacity={ 100 }/> )
+  }
+
+  if (!authenticated && !config["testing"]) {
+    return ( <Authenticate config={config} />);
   }
 
   if (new Date(Date.now()) <=
