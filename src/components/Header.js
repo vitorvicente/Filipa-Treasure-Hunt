@@ -36,9 +36,8 @@ const SiteHeading = styled.div`
 `;
 
 const Header = () => ( <MastHead>
-  <Overlay></Overlay>
-  <SiteHeading>
-  </SiteHeading>
+  <Overlay/>
+  <SiteHeading />
 </MastHead> );
 
 export default Header;
