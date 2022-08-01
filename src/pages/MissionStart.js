@@ -4,7 +4,7 @@ import Container from "react-bootstrap/Container";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { Button } from "react-bootstrap";
-import { StartingText } from "../components/Communications";
+import { StartingText } from "../assets/Communications";
 
 const MissionStart = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "rejected") {

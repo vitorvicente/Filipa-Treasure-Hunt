@@ -4,7 +4,7 @@ import Footer from "../components/Footer";
 import { withFirebase } from "vtr-react-components/dist/Firebase";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
-import { DateClueText } from "../components/Communications";
+import { DateClueText } from "../assets/Communications";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Loader from "../components/Loader";
