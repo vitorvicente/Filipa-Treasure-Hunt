@@ -8,8 +8,6 @@ const Authenticate = ({ config }) => {
   const [ error, setError ] = useState(false);
 
   const authenticate = (event) => {
-    console.log(event.target[0].value)
-
     if (event.target[0].value === config["password"]) {
       localStorage.setItem("authenticated", true.toString());
       window.location.reload(false);
@@ -26,7 +24,8 @@ const Authenticate = ({ config }) => {
       <h1 style={ { paddingBottom: "5%" } }>Please enter the Password!</h1>
 
       { error &&
-        <h3 style={ { paddingBottom: "2%" } }>Whoops! It seems like you entered the incorrect Password! Please try
+        <h3 style={ { paddingBottom: "2%", fontStyle: "italic" } }>Whoops! It seems like you entered the incorrect
+          Password! Please try
           again</h3> }
 
       <Form onSubmit={ authenticate }>
