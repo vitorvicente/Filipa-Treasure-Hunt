@@ -17,7 +17,8 @@ const FlightsClueBase = ({ localConfig, changeStage, changeLocalConfig }) => {
     if (localConfig["localReadingStage"] === "guessed") {
       return ( <FlightsClueTextThree changeStage={ changeStage } /> )
     } else {
-      return ( <FlightsClueTextOne changeLocalConfig={ changeLocalConfig } /> )
+      return ( <FlightsClueTextOne changeLocalConfig={ changeLocalConfig }
+                                   accountId={ localConfig["login"]["account"] } /> )
     }
   }
 };
@@ -29,7 +30,8 @@ const DecryptBase = ({ localConfig, changeLocalConfig }) => {
     Display = () => <DecryptRecoverPassword localConfig={ localConfig }
                                             changeLocalConfig={ changeLocalConfig } />;
   } else if (localConfig["localEncryptStage"] === "three") {
-    Display = () => <FlightsClueTextTwo changeLocalConfig={ changeLocalConfig } />;
+    Display = () => <FlightsClueTextTwo changeLocalConfig={ changeLocalConfig }
+                                        accountId={ localConfig["login"]["account"] } />;
   } else if (localConfig["localEncryptStage"] === "four") {
     Display = () => <DecryptSendInformation localConfig={ localConfig }
                                             changeLocalConfig={ changeLocalConfig } />;
@@ -153,50 +155,56 @@ const DecryptRecoverPassword = ({ localConfig, changeLocalConfig }) => {
   }
 
   return (
-    <Container style={ { paddingTop: "5%", paddingBottom: "5%" } }>
-      { error &&
-        <h5 style={ { paddingBottom: "3%", fontStyle: "italic" } }>Whoops! It seems like you entered an incorrect
-                                                                   Answer! Please try
-                                                                   again.</h5> }
+    <>
+      <Container style={ { paddingTop: "5%", paddingBottom: "5%" } }>
+        { error &&
+          <h5 style={ { paddingBottom: "3%", fontStyle: "italic" } }>Whoops! It seems like you entered an incorrect
+                                                                     Answer! Please try
+                                                                     again.</h5> }
 
-      <Form onSubmit={ authenticate }>
-        <Form.Group style={ { paddingBottom: "3%" } }
-                    className="mb-3"
-                    controlId="formBasicQOne">
-          <Form.Label><h3>Q1</h3></Form.Label>
-          <Form.Control type="text"
-                        placeholder="....." />
-        </Form.Group>
-        <Form.Group style={ { paddingBottom: "3%" } }
-                    className="mb-3"
-                    controlId="formBasicQTwo">
-          <Form.Label><h3>Q2</h3></Form.Label>
-          <Form.Control type="text"
-                        placeholder="....." />
-        </Form.Group>
-        <Form.Group style={ { paddingBottom: "3%" } }
-                    className="mb-3"
-                    controlId="formBasicQThree">
-          <Form.Label><h3>Q3</h3></Form.Label>
-          <Form.Control type="text"
-                        placeholder="....." />
-        </Form.Group>
-        <Row style={ { maxWidth: "80%", margin: "0 auto" } }>
-          <Col>
-            <Button variant="danger"
-                    type="submit">
-              <h3>Authenticate</h3>
-            </Button>
-          </Col>
-          <Col>
-            <Button variant="danger"
-                    onClick={ () => changeLocalConfig("localEncryptStage", "one") }>
-              <h3>Back to Login</h3>
-            </Button>
-          </Col>
-        </Row>
-      </Form>
-    </Container>
+        <Form onSubmit={ authenticate }>
+          <Form.Group style={ { paddingBottom: "3%" } }
+                      className="mb-3"
+                      controlId="formBasicQOne">
+            <Form.Label><h3>Where did we use to grab lunch before Fulbright?</h3></Form.Label>
+            <Form.Control type="text"
+                          placeholder="....." />
+          </Form.Group>
+          <Form.Group style={ { paddingBottom: "3%" } }
+                      className="mb-3"
+                      controlId="formBasicQTwo">
+            <Form.Label><h3>Which Boston Museum had not so good art, but an amazing view?</h3></Form.Label>
+            <Form.Control type="text"
+                          placeholder="....." />
+          </Form.Group>
+          <Form.Group style={ { paddingBottom: "3%" } }
+                      className="mb-3"
+                      controlId="formBasicQThree">
+            <Form.Label><h3>Where did we have a nice dinner together in the UK, and you got an Espresso Martini?</h3>
+            </Form.Label>
+            <Form.Control type="text"
+                          placeholder="....." />
+          </Form.Group>
+          <Row style={ { maxWidth: "80%", margin: "0 auto" } }>
+            <Col>
+              <Button variant="danger"
+                      type="submit">
+                <h3>Authenticate</h3>
+              </Button>
+            </Col>
+            <Col>
+              <Button variant="danger"
+                      onClick={ () => changeLocalConfig("localEncryptStage", "one") }>
+                <h3>Back to Login</h3>
+              </Button>
+            </Col>
+          </Row>
+        </Form>
+      </Container>
+      <Container>
+        <p><em><strong>HINT:</strong> If absolutely needed, you may use Google.</em></p>
+      </Container>
+    </>
   );
 };
 

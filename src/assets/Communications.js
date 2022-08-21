@@ -23,7 +23,7 @@ const Letter = styled(Container)`
     }
 `;
 
-export const FlightsClueTextOne = ({ changeLocalConfig }) => ( <>
+export const FlightsClueTextOne = ({ changeLocalConfig, accountId }) => ( <>
   <Header />
 
   <Container style={ { minHeight: "50vh" } }>
@@ -32,7 +32,7 @@ export const FlightsClueTextOne = ({ changeLocalConfig }) => ( <>
       Q has gone through all the documents you obtained during your last raid. Sad to say, he confirmed your prior
       discovery, it seems that you are the target. Yet not all is bad, Q has also been able to find another piece of
       information that might be useful, one of the folders includes references to a bank account with the Bank of
-      England, with account ID <strong>14928591423</strong>.
+      England, with account ID <strong>{accountId}</strong>.
     </h3>
     <h3 style={ { textIndent: "10%", paddingTop: "5%" } }>
       We believe this account has been used to arrange transportation for the enemy Operative and their team. However,
@@ -54,9 +54,9 @@ export const FlightsClueTextOne = ({ changeLocalConfig }) => ( <>
   <Footer />
 </> );
 
-export const FlightsClueTextTwo = ({ changeLocalConfig }) => ( <>
+export const FlightsClueTextTwo = ({ changeLocalConfig, accountId }) => ( <>
   <Container style={ { minHeight: "50vh", textAlign: "left", } }>
-    <h2 style={ { fontWeight: "bold", paddingBottom: "2%" } }>Account 14928591423</h2>
+    <h2 style={ { fontWeight: "bold", paddingBottom: "2%" } }>Account {accountId}</h2>
     <h3 style={ { fontStyle: "italic" } }>Transactions</h3>
     <Table>
       <thead>
