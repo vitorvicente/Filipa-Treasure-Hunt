@@ -74,7 +74,7 @@ const DecryptLogicPuzzle = ({ localConfig, changeLocalConfig }) => {
     const items = localConfig["board"];
     const item = items.find((item) => item["id"].toUpperCase() === id.toUpperCase());
 
-    if (!item || !item["guesseable"]) {
+    if (!item || !item["guesseable"] || item["status"]) {
       setError(true);
     } else {
       const index = items.indexOf(item);

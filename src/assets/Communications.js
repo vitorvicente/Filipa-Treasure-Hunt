@@ -172,10 +172,10 @@ export const OperativeClueTextThree = ({ changeStage }) => ( <>
       Good work on parsing through those documents and decrypting their information. Thanks to you, our agents now know
       where, and who, will target each VIP. This will allow us to be better prepared for when the time comes.
     </h3>
-    <h3 style={ { textIndent: "10%", paddingTop: "5%"} }>
-      Furthermore, we now have almost all the information regarding the coming attack on you, the only thing left to discover is
-      where the final Blacksite is located. Although we're officially on a time crunch, the Secretary trusts that you'll be able to figure
-      it out before it's too late...
+    <h3 style={ { textIndent: "10%", paddingTop: "5%" } }>
+      Furthermore, we now have almost all the information regarding the coming attack on you, the only thing left to
+      discover is where the final Blacksite is located. Although we're officially on a time crunch, the Secretary trusts
+      that you'll be able to figure it out before it's too late...
     </h3>
   </Container>
 
