@@ -56,48 +56,50 @@ const AppBase = ({ firebase }) => {
   }
 
   if (loading) {
-    return ( <Loader opacity={ 100 }/> )
+    return ( <Loader opacity={ 100 } /> )
   }
 
   if (!authenticated && !config["testing"]) {
-    return ( <Authenticate config={config} />);
+    return ( <Authenticate config={ config } /> );
   }
 
   if (new Date(Date.now()) <=
       config["localConfig"][`${ config["stage"] }`]["startDate"].toDate() &&
       !config["testing"]) {
-    return ( <PageBlocked date={ config["localConfig"][`${ config["stage"] }`]["startDate"].toDate() }/> )
+    return ( <PageBlocked date={ config["localConfig"][`${ config["stage"] }`]["startDate"].toDate() } /> )
   }
 
   switch (config["stage"]) {
     case "start":
       return <MissionStart localConfig={ config["localConfig"][`${ config["stage"] }`] }
                            changeStage={ changeStage }
-                           changeLocalConfig={ changeLocalConfig }/>
+                           changeLocalConfig={ changeLocalConfig } />
     case "one":
       return <DateClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
                        changeStage={ changeStage }
-                       changeLocalConfig={ changeLocalConfig }/>
+                       changeLocalConfig={ changeLocalConfig } />
     case "two":
       return <VIPClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
                       changeStage={ changeStage }
-                      changeLocalConfig={ changeLocalConfig }/>
+                      changeLocalConfig={ changeLocalConfig } />
     case "three":
       return <FlightsClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
                           changeStage={ changeStage }
-                          changeLocalConfig={ changeLocalConfig }/>
+                          changeLocalConfig={ changeLocalConfig } />
     case "four":
       return <OperativeClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
                             changeStage={ changeStage }
-                            changeLocalConfig={ changeLocalConfig }/>
+                            changeLocalConfig={ changeLocalConfig } />
     case "finale":
       return <LocationClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
                            changeStage={ changeStage }
-                           changeLocalConfig={ changeLocalConfig }/>
+                           changeLocalConfig={ changeLocalConfig } />
     case "details":
-      return <Details/>
+      return <Details localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                      changeStage={ changeStage }
+                      changeLocalConfig={ changeLocalConfig } />
     default:
-      return <Error/>
+      return <Error />
   }
 }
 
