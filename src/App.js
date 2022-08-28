@@ -15,6 +15,7 @@ import { getDoc, setDoc } from "firebase/firestore";
 import Loader from "./components/Loader";
 import PageBlocked from "./components/PageBlocked";
 import Authenticate from "./components/Authenticate";
+import Review from "./pages/Review";
 
 const AppBase = ({ firebase }) => {
   const [ loading, setLoading ] = useState(true);
@@ -88,6 +89,10 @@ const AppBase = ({ firebase }) => {
                           changeLocalConfig={ changeLocalConfig } />
     case "four":
       return <OperativeClue localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                            changeStage={ changeStage }
+                            changeLocalConfig={ changeLocalConfig } />
+    case "review":
+      return <Review localConfig={ config["localConfig"][`${ config["stage"] }`] }
                             changeStage={ changeStage }
                             changeLocalConfig={ changeLocalConfig } />
     case "finale":

@@ -181,7 +181,7 @@ export const OperativeClueTextThree = ({ changeStage }) => ( <>
 
   <Container style={ { paddingTop: "5%", paddingBottom: "5%", textAlign: "center" } }>
     <Button variant="danger"
-            onClick={ () => changeStage("finale") }>
+            onClick={ () => changeStage("review") }>
       <h3>Continue...</h3>
     </Button>
   </Container>
