@@ -43,17 +43,17 @@ const DetailsBase = ({ localConfig, changeLocalConfig }) => {
     <>
       <Header />
 
-        <Container style={ { textAlign: "center", paddingBottom: "5%" } }>
-          { localConfig["accepted"] &&
-            <h1><strong><em> See you in February! </em></strong></h1>
-          }
-          { hasSeenEverything && !localConfig["accepted"] &&
-            <Button variant="danger"
-                    onClick={ () => changeLocalConfig("accepted", true) }>
-              <h1><strong><em> Shall We? </em></strong></h1>
-            </Button>
-          }
-        </Container>
+      <Container style={ { textAlign: "center", paddingBottom: "5%" } }>
+        { localConfig["accepted"] &&
+          <h1><strong><em> See you in February! </em></strong></h1>
+        }
+        { hasSeenEverything && !localConfig["accepted"] &&
+          <Button variant="danger"
+                  onClick={ () => changeLocalConfig("accepted", true) }>
+            <h1><strong><em> Shall We? </em></strong></h1>
+          </Button>
+        }
+      </Container>
 
 
       <Display />
@@ -112,17 +112,15 @@ const PageOne = () => (
 
     <h3 style={ { textIndent: "10%", paddingTop: "5%" } }>
       With that said, the idea is for us to take a week or so in the Maldives, away from everything and everyone, in
-      an
-      overwater bungalow. We'd leave London on the 25th of February, and leave Male on the 4th of March. Since it
-      takes
-      about a day for travel each way, it would give us a full week there.
+      an overwater bungalow. We'd leave London on the 24th of February, and leave Male on the 4th of March. Since it
+      takes about a day for travel each way, it would give us a full week there.
     </h3>
 
     <h2 style={ { paddingTop: "5%" } }> Dates: </h2>
-    <h3 style={ { textIndent: "10%" } }> - Leaving Seattle: 24th of February </h3>
-    <h3 style={ { textIndent: "10%" } }> - Arriving in London: 25th of February </h3>
-    <h3 style={ { textIndent: "10%" } }> - Leaving London: 25th of February </h3>
-    <h3 style={ { textIndent: "10%" } }> - Arriving in Male: 26th of February </h3>
+    <h3 style={ { textIndent: "10%" } }> - Leaving Seattle: 23th of February </h3>
+    <h3 style={ { textIndent: "10%" } }> - Arriving in London: 24th of February </h3>
+    <h3 style={ { textIndent: "10%" } }> - Leaving London: 24th of February </h3>
+    <h3 style={ { textIndent: "10%" } }> - Arriving in Male: 25th of February </h3>
     <h3 style={ { textIndent: "10%" } }> - Leaving Male: 4th of May </h3>
     <h3 style={ { textIndent: "10%" } }> - Arriving in London: 5th of March </h3>
     <h3 style={ { textIndent: "10%" } }> - Leaving London: 6th of March </h3>
@@ -153,12 +151,12 @@ const PageTwo = () => (
 
     <Row>
       <Col>
-        <h3 style={ { paddingTop: "5%" } }> London - Doha (25/02/2023) </h3>
+        <h3 style={ { paddingTop: "5%" } }> London - Doha (24/02/2023) </h3>
         <h6 style={ { textIndent: "10%" } }> London Heathrow (LHR) - Hamad International Airport (DOH) </h6>
         <h6 style={ { textIndent: "10%" } }> 20:30 (GMT) - 06:20 (GMT+3) - Travel Time: 6h50 </h6>
         <h6 style={ { textIndent: "10%" } }> Qatar Airways B777 QR 2 </h6>
 
-        <h3 style={ { paddingTop: "5%" } }> Doha - Male (26/02/2023) </h3>
+        <h3 style={ { paddingTop: "5%" } }> Doha - Male (25/02/2023) </h3>
         <h6 style={ { textIndent: "10%" } }> Hamad International Airport (DOH) - Velana International Airport
                                              (MLE) </h6>
         <h6 style={ { textIndent: "10%" } }> 08:20 (GMT+3) - 15:00 (GMT+5) - Travel Time: 4h40 </h6>
@@ -185,7 +183,7 @@ const PageTwo = () => (
 
     <Row>
       <Col>
-        <h3 style={ { paddingTop: "5%" } }> Seattle - London (24/02/2023) </h3>
+        <h3 style={ { paddingTop: "5%" } }> Seattle - London (23/02/2023) </h3>
         <h6 style={ { textIndent: "10%" } }> Seattle-Tacoma International (SEA) - London Heathrow (LHR) </h6>
         <h6 style={ { textIndent: "10%" } }> 14:10 (GMT-8) - 07:35 (GMT) - Travel Time: 9h25 </h6>
         <h6 style={ { textIndent: "10%" } }> Virgin Atlantic B787 VS 106 </h6>
@@ -218,12 +216,12 @@ const PageThree = () => (
       (flights sadly just don't line up time wise).
     </h3>
 
-    <h2 style={ { paddingTop: "5%", paddingBottom: "2%" } }><strong><em> Male - 6 Nights </em></strong></h2>
+    <h2 style={ { paddingTop: "5%", paddingBottom: "2%" } }><strong><em> Male - 7 Nights </em></strong></h2>
     <Row>
       <Col>
         <h4 style={ { textIndent: "5%", paddingTop: "2%" } }><em>Hotel:</em> Anantara Dhigu Maldives Resort </h4>
 
-        <h4 style={ { textIndent: "5%", paddingTop: "2%" } }><em>Check-In:</em> 26/02/2023 </h4>
+        <h4 style={ { textIndent: "5%", paddingTop: "2%" } }><em>Check-In:</em> 25/02/2023 </h4>
         <h4 style={ { textIndent: "5%" } }><em>Check-Out:</em> 04/03/2023 </h4>
 
         <h4 style={ { textIndent: "5%", paddingTop: "2%" } }><em>Room:</em> Sunset Over Water Pool Suite </h4>
