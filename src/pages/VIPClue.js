@@ -1,4 +1,3 @@
-import { withFirebase } from "vtr-react-components/dist/Firebase";
 import React, { useState } from "react";
 import { VIPClueTextFour, VIPClueTextOne, VIPClueTextThree, VIPClueTextTwo } from "../assets/prompts/VIPClue";
 import Container from "react-bootstrap/Container";
@@ -8,23 +7,23 @@ import { Button, Form } from "react-bootstrap";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-const VIPClueBase = ({ localConfig, changeStage, changeLocalConfig }) => {
+const VIPClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {
     return ( <DecryptBase changeLocalConfig={ changeLocalConfig }
                           changeStage={ changeStage }
-                          localConfig={ localConfig }/> )
+                          localConfig={ localConfig } /> )
   } else {
     if (localConfig["localReadingStage"] === "guessed") {
-      return ( <VIPClueTextFour changeStage={ changeStage }/> )
+      return ( <VIPClueTextFour changeStage={ changeStage } /> )
     } else if (localConfig["localReadingStage"] === "three") {
       return ( <VIPClueTextThree changeLocalConfig={ changeLocalConfig }
-                                 hasReadEverything={ localConfig["hasReadEverything"] }/> )
+                                 hasReadEverything={ localConfig["hasReadEverything"] } /> )
     } else if (localConfig["localReadingStage"] === "two") {
       return ( <VIPClueTextTwo changeLocalConfig={ changeLocalConfig }
-                               hasReadEverything={ localConfig["hasReadEverything"] }/> )
+                               hasReadEverything={ localConfig["hasReadEverything"] } /> )
     } else {
       return ( <VIPClueTextOne changeLocalConfig={ changeLocalConfig }
-                               hasReadEverything={ localConfig["hasReadEverything"] }/> )
+                               hasReadEverything={ localConfig["hasReadEverything"] } /> )
     }
   }
 };
@@ -32,7 +31,7 @@ const VIPClueBase = ({ localConfig, changeStage, changeLocalConfig }) => {
 
 const DecryptBase = ({ localConfig, changeLocalConfig }) => (
   <>
-    <Header/>
+    <Header />
 
     <Container style={ { minHeight: "50vh" } }>
       <h1>Decryption Task</h1>
@@ -41,13 +40,13 @@ const DecryptBase = ({ localConfig, changeLocalConfig }) => (
         answer, you will be guided through three different steps.
       </h3>
       <DecryptForm changeLocalConfig={ changeLocalConfig }
-                   localConfig={ localConfig }/>
+                   localConfig={ localConfig } />
     </Container>
     <Container>
       <p><em><strong>HINT:</strong> Read the Text carefully, you may use Google to your advantage.</em></p>
     </Container>
 
-    <Footer/>
+    <Footer />
   </>
 );
 
@@ -91,12 +90,12 @@ const DecryptForm = ({ changeLocalConfig, localConfig }) => {
       <Form onSubmit={ checkAnswer }>
         <Row>
           <Col>
-            {localConfig["localEncryptStage"] === "one" &&
-             <h5 style={ { paddingBottom: "5%" } }>What was that small Object?</h5>}
-            {localConfig["localEncryptStage"] === "two" &&
-             <h5 style={ { paddingBottom: "5%" } }>What is the Cipher Key?</h5>}
-            {localConfig["localEncryptStage"] === "three" &&
-             <h5 style={ { paddingBottom: "5%" } }>Who is the Target VIP?</h5>}
+            { localConfig["localEncryptStage"] === "one" &&
+              <h5 style={ { paddingBottom: "5%" } }>What was that small Object?</h5> }
+            { localConfig["localEncryptStage"] === "two" &&
+              <h5 style={ { paddingBottom: "5%" } }>What is the Cipher Key?</h5> }
+            { localConfig["localEncryptStage"] === "three" &&
+              <h5 style={ { paddingBottom: "5%" } }>Who is the Target VIP?</h5> }
           </Col>
           <Col sm={ 8 }>
             <Form.Group style={ { paddingBottom: "3%" } }
@@ -105,7 +104,7 @@ const DecryptForm = ({ changeLocalConfig, localConfig }) => {
               <Form.Control type="text"
                             placeholder="Answer..."
                             defaultValue={ answer }
-                            onChange={ (event) => setAnswer(event.target.value) }/>
+                            onChange={ (event) => setAnswer(event.target.value) } />
             </Form.Group>
           </Col>
         </Row>
@@ -127,7 +126,5 @@ const DecryptForm = ({ changeLocalConfig, localConfig }) => {
     </Container>
   );
 };
-
-const VIPClue = withFirebase(VIPClueBase);
 
 export default VIPClue;

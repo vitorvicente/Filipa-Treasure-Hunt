@@ -7,8 +7,8 @@ const firebaseConfig = {
   projectId: "vtr-pt",
   storageBucket: "vtr-pt.appspot.com",
   messagingSenderId: "363782155278",
-  appId: "1:363782155278:web:df68e732efd529d346205f",
-  measurementId: "G-L1ZGQDL204"
+  appId: "1:363782155278:web:3c751b2d7f410fe246205f",
+  measurementId: "G-7WCW87EYXR"
 };
 
 class Firebase extends FirebaseSuper {

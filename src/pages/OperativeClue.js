@@ -1,4 +1,3 @@
-import { withFirebase } from "vtr-react-components/dist/Firebase";
 import React, { useEffect, useState } from "react";
 import {
   OperativeClueHelperText,
@@ -15,7 +14,7 @@ import Col from "react-bootstrap/Col";
 import Loader from "../components/Loader";
 import { populateHeader } from "../assets/data/LogicPuzzle";
 
-const OperativeClueBase = ({ localConfig, changeStage, changeLocalConfig }) => {
+const OperativeClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {
     return ( <DecryptBase changeLocalConfig={ changeLocalConfig }
                           localConfig={ localConfig } /> );
@@ -585,8 +584,5 @@ const DecryptFinalForm = ({ localConfig, changeLocalConfig }) => {
     </>
   );
 }
-
-
-const OperativeClue = withFirebase(OperativeClueBase);
 
 export default OperativeClue;

@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import Container from "react-bootstrap/Container";
 import Footer from "../components/Footer";
-import { withFirebase } from "vtr-react-components/dist/Firebase";
 import React from "react";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -9,8 +8,7 @@ import roomMaldives from "../assets/imgs/roomMaldives.png"
 import roomLondon from "../assets/imgs/roomLondon.jpg"
 import { Button, Image } from "react-bootstrap";
 
-const DetailsBase = ({ localConfig, changeLocalConfig }) => {
-
+const Details = ({ localConfig, changeLocalConfig }) => {
   let Display = () => <PageOne changeLocalConfig={ changeLocalConfig } />;
   if (localConfig["localStage"] === "two") {
     if (!localConfig["hasVisited"]["two"]) {
@@ -305,7 +303,5 @@ const PageFour = () => (
     </Row>
   </Container>
 );
-
-const Details = withFirebase(DetailsBase);
 
 export default Details;

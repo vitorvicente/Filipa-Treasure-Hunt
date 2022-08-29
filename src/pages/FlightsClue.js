@@ -1,4 +1,3 @@
-import { withFirebase } from "vtr-react-components/dist/Firebase";
 import React, { useState } from "react";
 import { FlightsClueTextOne, FlightsClueTextThree, FlightsClueTextTwo } from "../assets/prompts/FlightsClue";
 import Header from "../components/Header";
@@ -9,7 +8,7 @@ import boe from "../assets/imgs/boe.png"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
-const FlightsClueBase = ({ localConfig, changeStage, changeLocalConfig }) => {
+const FlightsClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {
     return ( <DecryptBase localConfig={ localConfig }
                           changeLocalConfig={ changeLocalConfig } /> );
@@ -259,7 +258,5 @@ const DecryptSendInformation = ({ localConfig, changeLocalConfig }) => {
     </Container>
   );
 };
-
-const FlightsClue = withFirebase(FlightsClueBase);
 
 export default FlightsClue;

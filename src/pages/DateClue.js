@@ -1,7 +1,6 @@
 import Header from "../components/Header";
 import Container from "react-bootstrap/Container";
 import Footer from "../components/Footer";
-import { withFirebase } from "vtr-react-components/dist/Firebase";
 import React, { useEffect, useState } from "react";
 import { Button, Form, Table } from "react-bootstrap";
 import { DateClueText } from "../assets/prompts/DateClue";
@@ -9,15 +8,17 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Loader from "../components/Loader";
 
-const DateClueBase = ({ localConfig, changeStage, changeLocalConfig }) => {
+const DateClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {
     return ( <Decryption localConfig={ localConfig }
                          changeLocalConfig={ changeLocalConfig }
-                         changeStage={ changeStage }/> )
+                         changeStage={ changeStage } /> )
   } else if (localConfig["localStage"] === "guessed") {
-    return ( <DateClueText changeStage={ changeStage } guessed={true} />)
+    return ( <DateClueText changeStage={ changeStage }
+                           guessed={ true } /> )
   } else {
-    return ( <DateClueText changeLocalConfig={ changeLocalConfig } guessed={false} /> )
+    return ( <DateClueText changeLocalConfig={ changeLocalConfig }
+                           guessed={ false } /> )
   }
 };
 
@@ -62,17 +63,17 @@ const Decryption = ({ localConfig, changeLocalConfig }) => {
   }
 
   return ( <>
-    <Header/>
+    <Header />
 
     <Container style={ { minHeight: "50vh" } }>
       <h1>DECRYPT THE MESSAGE</h1>
       <h3 style={ { paddingTop: "3%" } }>If all the words you can find, then in the remainder you will find your
-        key...</h3>
+                                         key...</h3>
 
       { error && <h5 style={ { paddingTop: "3%" } }> Incorrect answer! </h5> }
       { cantFinish && <h5 style={ { paddingTop: "3%" } }> Nice try! But you need to guess them all :) </h5> }
 
-      <GameBoard localConfig={ localConfig }/>
+      <GameBoard localConfig={ localConfig } />
       <Row>
         <Form onSubmit={ checkAnswer }>
           <Row>
@@ -86,7 +87,7 @@ const Decryption = ({ localConfig, changeLocalConfig }) => {
                 <Form.Control type="text"
                               placeholder="Answer..."
                               defaultValue={ answer }
-                              onChange={ (event) => setAnswer(event.target.value) }/>
+                              onChange={ (event) => setAnswer(event.target.value) } />
               </Form.Group>
             </Col>
           </Row>
@@ -108,7 +109,7 @@ const Decryption = ({ localConfig, changeLocalConfig }) => {
       </Row>
     </Container>
 
-    <Footer/>
+    <Footer />
   </> );
 }
 
@@ -142,7 +143,7 @@ const GameBoard = ({ localConfig }) => {
   }, [ board, tips, localConfig ]);
 
   if (loading) {
-    return ( <Loader opacity={ 100 }/> )
+    return ( <Loader opacity={ 100 } /> )
   }
 
   return (
@@ -152,12 +153,12 @@ const GameBoard = ({ localConfig }) => {
                style={ { textAlign: "center" } }>
           <tbody>
           { board.map((rowEntry, index) => <TableRow key={ index }
-                                                     rowData={ rowEntry }/>) }
+                                                     rowData={ rowEntry } />) }
           </tbody>
         </Table>
       </Col>
       { tips.map((colData, index) => <TipCol colData={ colData }
-                                             key={ index }/>) }
+                                             key={ index } />) }
     </Row>
   );
 };
@@ -167,14 +168,15 @@ const TipCol = ({ colData }) => (
     { colData.map((entryData, index) => (
       <p key={ index }
          style={ { textDecoration: entryData["status"] ? "line-through" : "none" } }><strong>Tip
-        # { entryData["tipNumber"] }</strong> { entryData["tip"] }</p> )) }
+                                                                                             # { entryData["tipNumber"] }</strong> { entryData["tip"] }
+      </p> )) }
   </Col>
 );
 
 const TableRow = ({ rowData }) => (
   <tr>
     { rowData.map((entryData, index) => <TableEntry key={ index }
-                                                    entryData={ entryData }/>) }
+                                                    entryData={ entryData } />) }
   </tr>
 );
 
@@ -185,8 +187,5 @@ const TableEntry = ({ entryData }) => (
     textTransform: entryData["status"] ? entryData["textTransform"] : "none"
   } }>{ entryData["letter"] }</th>
 );
-
-
-const DateClue = withFirebase(DateClueBase);
 
 export default DateClue;
