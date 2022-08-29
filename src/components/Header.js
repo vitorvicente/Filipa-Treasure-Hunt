@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 
-import Background from "../assets/main-background.jpg"
+import Background from "../assets/imgs/main-background.jpg"
 
 const MastHead = styled.div`
 	margin-bottom:50px;

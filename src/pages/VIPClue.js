@@ -1,6 +1,6 @@
 import { withFirebase } from "vtr-react-components/dist/Firebase";
 import React, { useState } from "react";
-import { VIPClueTextFour, VIPClueTextOne, VIPClueTextThree, VIPClueTextTwo } from "../assets/Communications";
+import { VIPClueTextFour, VIPClueTextOne, VIPClueTextThree, VIPClueTextTwo } from "../assets/prompts/VIPClue";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";

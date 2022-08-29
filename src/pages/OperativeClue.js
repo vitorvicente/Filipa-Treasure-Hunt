@@ -5,7 +5,7 @@ import {
   OperativeClueTextOne,
   OperativeClueTextThree,
   OperativeClueTextTwo
-} from "../assets/Communications";
+} from "../assets/prompts/OperativeClue";
 import Header from "../components/Header";
 import Container from "react-bootstrap/Container";
 import Footer from "../components/Footer";
@@ -13,7 +13,7 @@ import { Button, Form, Modal, Table } from "react-bootstrap";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Loader from "../components/Loader";
-import { populateHeader } from "../assets/BaseDataTwo";
+import { populateHeader } from "../assets/data/LogicPuzzle";
 
 const OperativeClueBase = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {

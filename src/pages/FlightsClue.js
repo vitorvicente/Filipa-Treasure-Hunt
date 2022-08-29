@@ -1,11 +1,11 @@
 import { withFirebase } from "vtr-react-components/dist/Firebase";
 import React, { useState } from "react";
-import { FlightsClueTextOne, FlightsClueTextThree, FlightsClueTextTwo } from "../assets/Communications";
+import { FlightsClueTextOne, FlightsClueTextThree, FlightsClueTextTwo } from "../assets/prompts/FlightsClue";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import Container from "react-bootstrap/Container";
 import { Button, Form, Image } from "react-bootstrap";
-import boe from "../assets/boe.png"
+import boe from "../assets/imgs/boe.png"
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 
