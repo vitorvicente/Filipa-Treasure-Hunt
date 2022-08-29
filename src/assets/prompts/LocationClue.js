@@ -34,16 +34,19 @@ export const LocationClueTextOne = ({ changeLocalConfig, hasReadEverything, curS
     </h5>
     <h5 style={ { fontStyle: "italic", paddingBottom: "5%" } }>
       You've decrypted messages, broken into safe houses, hacked bank accounts, and sifted through mountains of
-      intelligence. But you've managed to figure out almost all of the plot.
+      intelligence documents. But you've managed to figure out most of the plot.
     </h5>
     <h5 style={ { fontStyle: "italic", paddingBottom: "5%" } }>
       You know that you're the target, that the attack will take place in February, that the true name of the Operative
       targeting you, Nighthawk, is Vitor Vicente. You've even figured out that he intends to stop over in Qatar before
       taking you onto the final blacksite...
     </h5>
+    <h5 style={ { fontStyle: "italic", paddingBottom: "5%" } }>
+      But right now, all that seems useless, how are you supposed to know what the final destination is??? You're
+      sitting at your desk, wishing you had more to work with...
+    </h5>
     <h5 style={ { fontStyle: "italic" } }>
-      You're sitting at your desk, wishing you had more to work with to figure out where the damned blacksite is. That's
-      when you get a call...
+      That's when you get a call...
     </h5>
   </Container>
 
@@ -73,13 +76,13 @@ export const LocationClueTextTwo = ({ changeLocalConfig, hasReadEverything, curS
   <Container style={ { minHeight: "50vh" } }>
     <h1>Agent 1010,</h1>
     <h3 style={ { textIndent: "10%", paddingTop: "5%" } }>
-      The Secretary has finally managed to find Operative Nighthawk, he is currently at Heathrow, waiting to board a
-      flight to Lisbon. His intentions in visiting Portugal are still unknown to us at this time.
+      The Secretary has finally managed to find Operative Nighthawk, he is currently at Heathrow Airport, waiting to
+      board a flight to Lisbon. His intentions in visiting Portugal are still unknown to us at this time.
     </h3>
     <h3 style={ { textIndent: "10%", paddingTop: "5%" } }>
-      However, he has made a crucial mistake, he checked in 4 hours before his flight, and worst, he has checked two
-      pieces of luggage. This could be your chance to finally get to the bottom of this mystery, but we only have a
-      limited amount of time, if his luggage is not in Lisbon when he arrives, he might be suspicious.
+      Nevertheless, Q has learnt that he has made a crucial mistake, he checked in 4 hours before his flight, and worst,
+      he has checked two pieces of luggage. This could be your chance to finally get to the bottom of this mystery, but
+      we only have a limited amount of time, if his luggage is not in Lisbon when he arrives, he might become suspicious.
     </h3>
     <h3 style={ { textIndent: "10%", paddingTop: "5%" } }>
       You need to get to Heathrow, and search his bags for anything that might be of use.
@@ -120,7 +123,7 @@ export const LocationClueTextThree = ({ changeLocalConfig, hasReadEverything, ha
 
   <Container style={ { minHeight: "50vh", textAlign: "center" } }>
     <h5 style={ { fontStyle: "italic", paddingBottom: "5%" } }>
-      You grab your keys, holster your pistol, and speed your way down to the Airport. There, you are met by an
+      You grab your keys, holster your Baretta, and speed your way down to the Airport. There, you are met by an
       informant who gives you a spare pair of workers clothes, and leads you to where Nighthawk's bags are being held
       while awaiting the arrival of TAP's aircraft.
     </h5>
