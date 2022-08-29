@@ -103,9 +103,9 @@ const Details = ({ localConfig, changeLocalConfig }) => {
 
 const PageOne = () => (
   <Container style={ { minHeight: "50vh", paddingBottom: "5%" } }>
-    <h1><strong><em> Overall Plan </em></strong></h1>
+    <h1><strong><em> Overall Trip Plan </em></strong></h1>
     <h3 style={ { textAlign: "center", paddingTop: "5%", fontStyle: "italic" } }>
-      <strong> [MASSIVE PREFACE ABOUT THE TRIP PLEASE LET ME EXPLAIN] </strong>
+      <strong> [MASSIVE PREFACE ABOUT THE TRIP] </strong>
     </h3>
 
     <h3 style={ { textIndent: "10%", paddingTop: "5%" } }>
