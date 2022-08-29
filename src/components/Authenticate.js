@@ -1,8 +1,10 @@
-import Header from "./Header";
-import Container from "react-bootstrap/Container";
-import Footer from "./Footer";
 import React, { useState } from "react";
-import { Button, Form } from "react-bootstrap";
+
+import { Button, Container, Form } from "react-bootstrap";
+
+import Header from "./Header";
+import Footer from "./Footer";
+
 
 const Authenticate = ({ config }) => {
   const [ error, setError ] = useState(false);
@@ -18,22 +20,22 @@ const Authenticate = ({ config }) => {
   }
 
   return ( <>
-    <Header/>
+    <Header />
 
     <Container style={ { minHeight: "50vh", textAlign: "center" } }>
       <h1 style={ { paddingBottom: "5%" } }>Please enter the Password!</h1>
 
       { error &&
         <h3 style={ { paddingBottom: "2%", fontStyle: "italic" } }>Whoops! It seems like you entered the incorrect
-          Password! Please try
-          again</h3> }
+                                                                   Password! Please try
+                                                                   again</h3> }
 
       <Form onSubmit={ authenticate }>
         <Form.Group style={ { paddingBottom: "3%" } }
                     className="mb-3"
                     controlId="formBasicPassword">
           <Form.Control type="password"
-                        placeholder="Password"/>
+                        placeholder="Password" />
         </Form.Group>
         <Button variant="danger"
                 type="submit">
@@ -42,7 +44,7 @@ const Authenticate = ({ config }) => {
       </Form>
     </Container>
 
-    <Footer/>
+    <Footer />
   </> )
 };
 

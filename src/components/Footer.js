@@ -1,4 +1,5 @@
 import React from "react";
+
 import { FooterDiv } from "../assets/Styles";
 
 const Footer = () => ( <FooterDiv>

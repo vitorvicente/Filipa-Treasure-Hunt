@@ -1,11 +1,10 @@
 import React from "react";
 
-import Container from "react-bootstrap/Container";
+import { Button, Col, Container, Row } from "react-bootstrap";
+
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { Button } from "react-bootstrap";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
+
 
 const MissionStart = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "rejected") {

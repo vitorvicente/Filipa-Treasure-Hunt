@@ -1,6 +1,9 @@
 import styled from "styled-components";
+
 import Container from "react-bootstrap/Container";
+
 import Background from "./imgs/main-background.jpg";
+
 
 export const Letter = styled(Container)`
     padding-top: 1%;

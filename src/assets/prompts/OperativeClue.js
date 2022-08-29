@@ -1,11 +1,12 @@
-import Header from "../../components/Header";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Button, Table } from "react-bootstrap";
-import Footer from "../../components/Footer";
 import React from "react";
+
+import { Button, Table, Row, Col, Container } from "react-bootstrap";
+
 import { Card, CardTwo } from "../Styles";
+
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+
 
 export const OperativeClueTextOne = ({ changeLocalConfig, hasReadEverything }) => ( <>
   <Header />

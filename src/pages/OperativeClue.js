@@ -1,18 +1,19 @@
 import React, { useEffect, useState } from "react";
+import { populateHeader } from "../assets/data/LogicPuzzle";
+
+import { Button, Col, Container, Form, Modal, Row, Table } from "react-bootstrap";
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+import Loader from "../components/Loader";
+
 import {
   OperativeClueHelperText,
   OperativeClueTextOne,
   OperativeClueTextThree,
   OperativeClueTextTwo
 } from "../assets/prompts/OperativeClue";
-import Header from "../components/Header";
-import Container from "react-bootstrap/Container";
-import Footer from "../components/Footer";
-import { Button, Form, Modal, Table } from "react-bootstrap";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Loader from "../components/Loader";
-import { populateHeader } from "../assets/data/LogicPuzzle";
+
 
 const OperativeClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {

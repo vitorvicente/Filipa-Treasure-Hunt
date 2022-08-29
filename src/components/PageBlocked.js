@@ -1,8 +1,9 @@
-import Header from "./Header";
-import Container from "react-bootstrap/Container";
-import Footer from "./Footer";
 import React from "react";
-import { Button } from "react-bootstrap";
+
+import { Button, Container} from "react-bootstrap";
+
+import Header from "./Header";
+import Footer from "./Footer";
 
 const PageBlocked = ({ date }) => ( <>
   <Header/>

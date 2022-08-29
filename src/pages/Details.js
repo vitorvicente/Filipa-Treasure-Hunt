@@ -1,12 +1,12 @@
-import Header from "../components/Header";
-import Container from "react-bootstrap/Container";
-import Footer from "../components/Footer";
 import React from "react";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import roomMaldives from "../assets/imgs/roomMaldives.png"
-import roomLondon from "../assets/imgs/roomLondon.jpg"
-import { Button, Image } from "react-bootstrap";
+
+import { Button, Image, Col, Row, Container } from "react-bootstrap";
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
+
+import roomMaldives from "../assets/imgs/roomMaldives.png";
+import roomLondon from "../assets/imgs/roomLondon.jpg";
 
 const Details = ({ localConfig, changeLocalConfig }) => {
   let Display = () => <PageOne changeLocalConfig={ changeLocalConfig } />;

@@ -1,8 +1,10 @@
-import Header from "../../components/Header";
-import Container from "react-bootstrap/Container";
-import { Button } from "react-bootstrap";
-import Footer from "../../components/Footer";
 import React from "react";
+
+import { Button, Container } from "react-bootstrap";
+
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+
 
 export const DateClueText = ({ changeLocalConfig, guessed, changeStage }) => ( <>
   <Header />

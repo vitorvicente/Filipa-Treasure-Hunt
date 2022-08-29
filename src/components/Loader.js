@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { Wrapper, Spinner } from "../assets/Styles";
+
+import { Spinner, Wrapper } from "../assets/Styles";
 
 const Loader = ({ opacity }) => ( <Wrapper opacity={ opacity }>
   <Spinner />

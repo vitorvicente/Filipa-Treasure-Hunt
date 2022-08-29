@@ -1,11 +1,12 @@
 import React, { useState } from "react";
-import { VIPClueTextFour, VIPClueTextOne, VIPClueTextThree, VIPClueTextTwo } from "../assets/prompts/VIPClue";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import { Button, Form } from "react-bootstrap";
+
+import { Button, Col, Container, Form, Row } from "react-bootstrap";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
+
+import { VIPClueTextFour, VIPClueTextOne, VIPClueTextThree, VIPClueTextTwo } from "../assets/prompts/VIPClue";
+
 
 const VIPClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {

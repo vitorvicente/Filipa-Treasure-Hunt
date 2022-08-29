@@ -1,12 +1,14 @@
 import React, { useState } from "react";
-import { FlightsClueTextOne, FlightsClueTextThree, FlightsClueTextTwo } from "../assets/prompts/FlightsClue";
+
+import { Button, Col, Container, Form, Image, Row } from "react-bootstrap";
+
 import Header from "../components/Header";
 import Footer from "../components/Footer";
-import Container from "react-bootstrap/Container";
-import { Button, Form, Image } from "react-bootstrap";
-import boe from "../assets/imgs/boe.png"
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+
+import { FlightsClueTextOne, FlightsClueTextThree, FlightsClueTextTwo } from "../assets/prompts/FlightsClue";
+
+import boe from "../assets/imgs/boe.png";
+
 
 const FlightsClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {

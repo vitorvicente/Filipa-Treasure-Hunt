@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { withFirebase } from "vtr-react-components/dist/Firebase";
+import { getDoc, setDoc } from "firebase/firestore";
 
-import Error from "./components/Error"
 import MissionStart from "./pages/MissionStart";
 import DateClue from "./pages/DateClue";
 import VIPClue from "./pages/VIPClue";
@@ -9,12 +10,13 @@ import OperativeClue from "./pages/OperativeClue";
 import LocationClue from "./pages/LocationClue";
 import Details from "./pages/Details";
 
-import 'bootstrap/dist/css/bootstrap.css';
-import { withFirebase } from "vtr-react-components/dist/Firebase";
-import { getDoc, setDoc } from "firebase/firestore";
+import Authenticate from "./components/Authenticate";
+import Error from "./components/Error";
 import Loader from "./components/Loader";
 import PageBlocked from "./components/PageBlocked";
-import Authenticate from "./components/Authenticate";
+
+import 'bootstrap/dist/css/bootstrap.css';
+
 
 const AppBase = ({ firebase }) => {
   const [ loading, setLoading ] = useState(true);

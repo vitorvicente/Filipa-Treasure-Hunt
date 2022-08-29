@@ -1,12 +1,13 @@
-import Header from "../components/Header";
-import Container from "react-bootstrap/Container";
-import Footer from "../components/Footer";
 import React, { useEffect, useState } from "react";
-import { Button, Form, Table } from "react-bootstrap";
-import { DateClueText } from "../assets/prompts/DateClue";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
+
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
+
+import Header from "../components/Header";
+import Footer from "../components/Footer";
 import Loader from "../components/Loader";
+
+import { DateClueText } from "../assets/prompts/DateClue";
+
 
 const DateClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {

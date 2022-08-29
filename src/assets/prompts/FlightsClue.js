@@ -1,8 +1,10 @@
-import Header from "../../components/Header";
-import Container from "react-bootstrap/Container";
-import { Button, Table } from "react-bootstrap";
-import Footer from "../../components/Footer";
 import React from "react";
+
+import { Button, Container, Table } from "react-bootstrap";
+
+import Header from "../../components/Header";
+import Footer from "../../components/Footer";
+
 
 export const FlightsClueTextOne = ({ changeLocalConfig, accountId }) => ( <>
   <Header />
