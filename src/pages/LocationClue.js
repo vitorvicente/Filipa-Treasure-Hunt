@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   LocationClueTextFive,
   LocationClueTextFour,
@@ -8,8 +8,9 @@ import {
   LocationClueTextTwo
 } from "../assets/prompts/LocationClue";
 import Header from "../components/Header";
-import { Button, Col, Container, Form, Row } from "react-bootstrap";
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import Footer from "../components/Footer";
+import Loader from "../components/Loader";
 
 const LocationClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {
@@ -140,7 +141,225 @@ const DecryptPadlocks = ({ localConfig, changeLocalConfig }) => {
   );
 };
 
-const DecryptWordle = ({ localConfig, changeLocalConfig }) => ( <h1>WORDLE</h1> );
+const DecryptWordle = ({ localConfig, changeLocalConfig }) => {
+  const [ error, setError ] = useState(false);
+  const [ checking, setChecking ] = useState(false);
+  const [ alreadyWon, setAlreadyWon ] = useState(false);
+
+  //changeLocalConfig("wordle", WORDLE);
+
+  const checkAnswer = (event) => {
+    event.preventDefault();
+    setChecking(true);
+    setError(false);
+    setAlreadyWon(false);
+
+    if (localConfig["wordle"]["won"]) {
+      setAlreadyWon(true);
+      return;
+    }
+
+    const enteredAnswer = [ ...Array(5) ]
+    enteredAnswer.forEach((value, index) => enteredAnswer[index] = event.target[index].value);
+
+    let mistake = enteredAnswer.indexOf("") !== -1 || enteredAnswer.indexOf(" ") !== -1;
+
+    enteredAnswer.forEach((item) => {
+      mistake = mistake || item.length > 1;
+    });
+
+    if (mistake) {
+      setError(true);
+      return;
+    }
+
+    const wordle = localConfig["wordle"];
+    const index = wordle["iteration"];
+    const board = wordle["board"];
+    let won = true;
+
+    enteredAnswer.forEach((val, ind) => {
+      const cell = board.find((c) => c["x"] === index && c["y"] === ind);
+      cell["value"] = val.toUpperCase();
+      const answers = wordle["finalAnswer"].filter((v) => val.toUpperCase() === v["value"].toUpperCase());
+
+      let matches = false;
+
+      if (!!answers) {
+        let alreadyGuessed = true;
+        answers.forEach((option) => {
+          matches = matches || ( option["x"] === ind );
+          if (matches) {
+            option["guessed"] = true;
+          }
+
+          alreadyGuessed = alreadyGuessed && option["guessed"];
+        });
+
+        cell["color"] = (
+          matches ? wordle["correctPlaceColor"] : (
+            !alreadyGuessed ? wordle["correctLetterColor"] : wordle["notFoundColor"]
+          )
+        );
+      } else {
+        cell["color"] = wordle["notFoundColor"]
+      }
+
+      won = won && matches;
+    });
+
+    for (let cursor = index + 1; cursor < 6 && won; cursor++) {
+      enteredAnswer.forEach((val, ind) => {
+        const cell = board.find((c) => c["x"] === cursor && c["y"] === ind);
+        cell["color"] = wordle["notFoundColor"];
+      });
+    }
+
+    wordle["iteration"] = index + 1;
+    wordle["won"] = won;
+
+    setChecking(false);
+    changeLocalConfig("wordle", wordle);
+  };
+
+  return (
+    <>
+      <Container style={ { paddingTop: "5%" } }>
+        <h1>HACK THE DEVICE</h1>
+
+        { alreadyWon &&
+          <h5 style={ { paddingTop: "3%", fontStyle: "italic" } }> You already won! Click Continue to continue!</h5> }
+
+        { error &&
+          <h5 style={ { paddingTop: "3%", fontStyle: "italic" } }> Please fill all available spots with a Single
+                                                                   Letter! </h5> }
+
+        <GameBoard localConfig={ localConfig } />
+        <Row>
+          <Form onSubmit={ checkAnswer }>
+            <Row style={ { paddingBottom: "5%" } }>
+              <Col>
+                <Form.Group
+                  className="mb-3"
+                  controlId="answerOne">
+                  <Form.Control type="text"
+                                placeholder="..." />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group
+                  className="mb-3"
+                  controlId="answerTwo">
+                  <Form.Control type="text"
+                                placeholder="..." />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group
+                  className="mb-3"
+                  controlId="answerThree">
+                  <Form.Control type="text"
+                                placeholder="..." />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group
+                  className="mb-3"
+                  controlId="answerFour">
+                  <Form.Control type="text"
+                                placeholder="..." />
+                </Form.Group>
+              </Col>
+              <Col>
+                <Form.Group
+                  className="mb-3"
+                  controlId="answerFive">
+                  <Form.Control type="text"
+                                placeholder="..." />
+                </Form.Group>
+              </Col>
+            </Row>
+            <Row style={ { paddingBottom: "5%" } }>
+              <Col>
+                <Button variant="danger"
+                        disabled={ checking }
+                        type="submit">
+                  <h3>Check Answer</h3>
+                </Button>
+              </Col>
+              {
+                localConfig["wordle"]["won"] &&
+                <Col>
+                  <Button variant="danger"
+                          onClick={ () => {
+                            const hasMovedOn = localConfig["hasMovedOn"];
+                            hasMovedOn[1] = true;
+                            changeLocalConfig("hasMovedOn", hasMovedOn);
+                            changeLocalConfig("localReadingStage", "five");
+                            changeLocalConfig("localStage", "reading");
+                          } }>
+                    <h3>Continue...</h3>
+                  </Button>
+                </Col>
+              }
+            </Row>
+          </Form>
+        </Row>
+      </Container>
+    </>
+  );
+};
+
+const GameBoard = ({ localConfig }) => {
+  const [ board ] = useState([ ...Array(6) ].map(x => Array(5).fill({})));
+  const [ loading, setLoading ] = useState(true);
+
+  useEffect(() => {
+    localConfig["wordle"]["board"].forEach((entry) => {
+      board[entry["x"]][entry["y"]] = {
+        value: entry["value"],
+        color: entry["color"]
+      };
+    })
+
+    setLoading(false)
+  }, [ board, localConfig ]);
+
+  if (loading) {
+    return ( <Loader opacity={ 100 } /> )
+  }
+
+  return (
+    <Row style={ { paddingBottom: "3%", paddingTop: "3%" } }>
+      <Col>
+        <Table bordered
+               style={ { textAlign: "center" } }>
+          <tbody>
+          { board.map((rowEntry, index) => <TableRow key={ index }
+                                                     rowData={ rowEntry } />) }
+          </tbody>
+        </Table>
+      </Col>
+    </Row>
+  );
+};
+
+const TableRow = ({ rowData }) => (
+  <tr
+    style={ { height: "25px" } }
+  >
+    { rowData.map((entryData, index) => <TableEntry key={ index }
+                                                    entryData={ entryData } />) }
+  </tr>
+);
+
+const TableEntry = ({ entryData }) => (
+  <th style={ {
+    background: entryData["color"],
+    width: "25px",
+    height: "25px"
+  } }> { entryData["value"] } </th>
+);
 
 const DecryptFinalForm = ({ localConfig, changeLocalConfig }) => {
   const [ error, setError ] = useState(false);
