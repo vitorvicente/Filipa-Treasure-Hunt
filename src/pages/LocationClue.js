@@ -11,6 +11,7 @@ import Header from "../components/Header";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Loader from "../components/Loader";
+import { WORDLE } from "../assets/data/Wordle";
 
 const LocationClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {
@@ -160,7 +161,10 @@ const DecryptWordle = ({ localConfig, changeLocalConfig }) => {
     }
 
     const enteredAnswer = [ ...Array(5) ]
-    enteredAnswer.forEach((value, index) => enteredAnswer[index] = event.target[index].value);
+    enteredAnswer.forEach((value, index) => enteredAnswer[index] = {
+      value: event.target[index].value,
+      matchIndex: -1
+    });
 
     let mistake = enteredAnswer.indexOf("") !== -1 || enteredAnswer.indexOf(" ") !== -1;
 
@@ -180,33 +184,34 @@ const DecryptWordle = ({ localConfig, changeLocalConfig }) => {
 
     enteredAnswer.forEach((val, ind) => {
       const cell = board.find((c) => c["x"] === index && c["y"] === ind);
-      cell["value"] = val.toUpperCase();
-      const answers = wordle["finalAnswer"].filter((v) => val.toUpperCase() === v["value"].toUpperCase());
+      cell["value"] = val["value"].toUpperCase();
+      const answers = wordle["finalAnswer"].filter((v) => val["value"].toUpperCase() === v["value"].toUpperCase());
 
       let matches = false;
-
       if (!!answers) {
-        let alreadyGuessed = true;
         answers.forEach((option) => {
-          matches = matches || ( option["x"] === ind );
-          if (matches) {
+          if (option["x"] === ind) {
+            enteredAnswer[ind]["matchIndex"] = option["x"];
+            option["guessed"] = true;
+            matches = true;
+          } else if (!option["guessed"] && (enteredAnswer[ind]["matchIndex"] === -1)) {
+            enteredAnswer[ind]["matchIndex"] = option["x"];
             option["guessed"] = true;
           }
-
-          alreadyGuessed = alreadyGuessed && option["guessed"];
         });
-
-        cell["color"] = (
-          matches ? wordle["correctPlaceColor"] : (
-            !alreadyGuessed ? wordle["correctLetterColor"] : wordle["notFoundColor"]
-          )
-        );
-      } else {
-        cell["color"] = wordle["notFoundColor"]
       }
+
+      cell["color"] = (
+        matches ? wordle["correctPlaceColor"] : (
+          (enteredAnswer[ind]["matchIndex"] !== -1) ? wordle["correctLetterColor"] : wordle["notFoundColor"]
+        )
+      );
 
       won = won && matches;
     });
+
+    wordle["finalAnswer"].forEach((option) => option["guessed"] = false);
+
 
     for (let cursor = index + 1; cursor < 6 && won; cursor++) {
       enteredAnswer.forEach((val, ind) => {
