@@ -8,7 +8,7 @@ import Footer from "../components/Footer";
 import roomMaldives from "../assets/imgs/roomMaldives.png";
 import roomLondon from "../assets/imgs/roomLondon.jpg";
 
-const Details = ({ localConfig, changeLocalConfig }) => {
+const Details = ({ localConfig, changeStage, changeLocalConfig }) => {
   let Display = () => <PageOne changeLocalConfig={ changeLocalConfig } />;
   if (localConfig["localStage"] === "two") {
     if (!localConfig["hasVisited"]["two"]) {
@@ -42,12 +42,9 @@ const Details = ({ localConfig, changeLocalConfig }) => {
       <Header />
 
       <Container style={ { textAlign: "center", paddingBottom: "5%" } }>
-        { localConfig["accepted"] &&
-          <h1><strong><em> See you in February! </em></strong></h1>
-        }
-        { hasSeenEverything && !localConfig["accepted"] &&
+        { hasSeenEverything &&
           <Button variant="danger"
-                  onClick={ () => changeLocalConfig("accepted", true) }>
+                  onClick={ () => changeStage("note") }>
             <h1><strong><em> Shall We? </em></strong></h1>
           </Button>
         }
