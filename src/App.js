@@ -9,6 +9,7 @@ import FlightsClue from "./pages/FlightsClue";
 import OperativeClue from "./pages/OperativeClue";
 import LocationClue from "./pages/LocationClue";
 import Details from "./pages/Details";
+import Note from "./pages/Note";
 
 import Authenticate from "./components/Authenticate";
 import Error from "./components/Error";
@@ -68,7 +69,8 @@ const AppBase = ({ firebase }) => {
   if (new Date(Date.now()) <=
       config["localConfig"][`${ config["stage"] }`]["startDate"].toDate() &&
       !config["testing"]) {
-    return ( <PageBlocked date={ config["localConfig"][`${ config["stage"] }`]["startDate"].toDate() } /> )
+    return ( <PageBlocked date={ config["localConfig"][`${ config["stage"] }`]["startDate"].toDate() }
+                          isLast={ config["stage"] === "note" } /> )
   }
 
   switch (config["stage"]) {
@@ -98,6 +100,10 @@ const AppBase = ({ firebase }) => {
                            changeLocalConfig={ changeLocalConfig } />
     case "details":
       return <Details localConfig={ config["localConfig"][`${ config["stage"] }`] }
+                      changeStage={ changeStage }
+                      changeLocalConfig={ changeLocalConfig } />
+    case "note":
+      return <Note localConfig={ config["localConfig"][`${ config["stage"] }`] }
                       changeStage={ changeStage }
                       changeLocalConfig={ changeLocalConfig } />
     default:
