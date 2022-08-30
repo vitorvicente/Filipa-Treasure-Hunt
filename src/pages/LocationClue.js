@@ -11,7 +11,6 @@ import Header from "../components/Header";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import Footer from "../components/Footer";
 import Loader from "../components/Loader";
-import { WORDLE } from "../assets/data/Wordle";
 
 const LocationClue = ({ localConfig, changeStage, changeLocalConfig }) => {
   if (localConfig["localStage"] === "decrypt") {
@@ -194,7 +193,7 @@ const DecryptWordle = ({ localConfig, changeLocalConfig }) => {
             enteredAnswer[ind]["matchIndex"] = option["x"];
             option["guessed"] = true;
             matches = true;
-          } else if (!option["guessed"] && (enteredAnswer[ind]["matchIndex"] === -1)) {
+          } else if (!option["guessed"] && ( enteredAnswer[ind]["matchIndex"] === -1 )) {
             enteredAnswer[ind]["matchIndex"] = option["x"];
             option["guessed"] = true;
           }
@@ -203,7 +202,7 @@ const DecryptWordle = ({ localConfig, changeLocalConfig }) => {
 
       cell["color"] = (
         matches ? wordle["correctPlaceColor"] : (
-          (enteredAnswer[ind]["matchIndex"] !== -1) ? wordle["correctLetterColor"] : wordle["notFoundColor"]
+          ( enteredAnswer[ind]["matchIndex"] !== -1 ) ? wordle["correctLetterColor"] : wordle["notFoundColor"]
         )
       );
 
