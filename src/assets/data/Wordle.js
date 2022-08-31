@@ -1,14 +1,14 @@
 export const WORDLE = {
   won: false, iteration: 0, finalAnswer: [ {
-    value: "A", x: 0, guessed: false,
+    value: "D", x: 0, guessed: false,
   }, {
-    value: "A", x: 1, guessed: false,
+    value: "R", x: 1, guessed: false,
   }, {
-    value: "C", x: 2, guessed: false,
+    value: "E", x: 2, guessed: false,
   }, {
-    value: "D", x: 3, guessed: false,
+    value: "A", x: 3, guessed: false,
   }, {
-    value: "E", x: 4, guessed: false,
+    value: "M", x: 4, guessed: false,
   }, ], notFoundColor: "#787c7f", correctLetterColor: "#c8b653", correctPlaceColor: "#6ca965", board: [ {
     x: 0, y: 0, value: " ", color: "#fff"
   }, {

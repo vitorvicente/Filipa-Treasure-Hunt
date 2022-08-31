@@ -9,7 +9,7 @@ const Note = ({ localConfig, changeLocalConfig }) => {
   if (localConfig["localStage"] === "two") {
     Display = () => <PageTwo changeLocalConfig={ changeLocalConfig } />;
   } else if (localConfig["localStage"] === "end") {
-    Display = () => <End />
+    Display = () => <End />;
   }
 
   return (
