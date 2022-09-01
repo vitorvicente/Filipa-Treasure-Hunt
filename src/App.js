@@ -104,12 +104,12 @@ const AppBase = ({ firebase }) => {
                       changeLocalConfig={ changeLocalConfig } />
     case "note":
       return <Note localConfig={ config["localConfig"][`${ config["stage"] }`] }
-                      changeLocalConfig={ changeLocalConfig } />
+                   changeLocalConfig={ changeLocalConfig } />
     default:
       return <Error />
   }
 }
 
-const App = withFirebase(AppBase)
+const App = withFirebase(AppBase);
 
 export default App;
