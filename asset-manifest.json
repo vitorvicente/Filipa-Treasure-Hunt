@@ -5,11 +5,11 @@
     "runtime-main.js": "/static/js/runtime-main.09f1f2d2.js",
     "runtime-main.js.map": "/static/js/runtime-main.09f1f2d2.js.map",
     "static/css/2.eca2297d.chunk.css": "/static/css/2.eca2297d.chunk.css",
-    "static/js/2.492f85ed.chunk.js": "/static/js/2.492f85ed.chunk.js",
-    "static/js/2.492f85ed.chunk.js.map": "/static/js/2.492f85ed.chunk.js.map",
+    "static/js/2.033b5b17.chunk.js": "/static/js/2.033b5b17.chunk.js",
+    "static/js/2.033b5b17.chunk.js.map": "/static/js/2.033b5b17.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.eca2297d.chunk.css.map": "/static/css/2.eca2297d.chunk.css.map",
-    "static/js/2.492f85ed.chunk.js.LICENSE.txt": "/static/js/2.492f85ed.chunk.js.LICENSE.txt",
+    "static/js/2.033b5b17.chunk.js.LICENSE.txt": "/static/js/2.033b5b17.chunk.js.LICENSE.txt",
     "static/media/avatar.png": "/static/media/avatar.a7cc3f54.png",
     "static/media/boe.227e0662.png": "/static/media/boe.227e0662.png",
     "static/media/main-background.jpg": "/static/media/main-background.71296bf1.jpg",
@@ -19,7 +19,7 @@
   "entrypoints": [
     "static/js/runtime-main.09f1f2d2.js",
     "static/css/2.eca2297d.chunk.css",
-    "static/js/2.492f85ed.chunk.js",
+    "static/js/2.033b5b17.chunk.js",
     "static/js/main.0013ac21.chunk.js"
   ]
 }
