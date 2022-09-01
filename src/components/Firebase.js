@@ -1,4 +1,4 @@
-import { default as FirebaseSuper } from 'vtr-react-components/dist/Firebase';
+import { Firebase as FirebaseSuper } from 'vtr-react-components';
 
 const firebaseConfig = {
   apiKey: "AIzaSyDWiUHWHAPft5TJZ7RbteUSr5pdvMIqs_c",

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { withFirebase } from "vtr-react-components/dist/Firebase";
+import { withFirebase } from "vtr-react-components";
 import { getDoc, setDoc } from "firebase/firestore";
 
 import MissionStart from "./pages/MissionStart";

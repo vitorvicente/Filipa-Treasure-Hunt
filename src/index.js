@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { FirebaseContext } from 'vtr-react-components/dist/Firebase';
+import { FirebaseContext } from 'vtr-react-components';
 
 import App from './App';
 
