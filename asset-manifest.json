@@ -1,25 +1,36 @@
 {
   "files": {
-    "main.js": "/static/js/main.0013ac21.chunk.js",
-    "main.js.map": "/static/js/main.0013ac21.chunk.js.map",
+    "main.js": "/static/js/main.4f582392.chunk.js",
+    "main.js.map": "/static/js/main.4f582392.chunk.js.map",
     "runtime-main.js": "/static/js/runtime-main.09f1f2d2.js",
     "runtime-main.js.map": "/static/js/runtime-main.09f1f2d2.js.map",
     "static/css/2.eca2297d.chunk.css": "/static/css/2.eca2297d.chunk.css",
-    "static/js/2.033b5b17.chunk.js": "/static/js/2.033b5b17.chunk.js",
-    "static/js/2.033b5b17.chunk.js.map": "/static/js/2.033b5b17.chunk.js.map",
+    "static/js/2.7002d9eb.chunk.js": "/static/js/2.7002d9eb.chunk.js",
+    "static/js/2.7002d9eb.chunk.js.map": "/static/js/2.7002d9eb.chunk.js.map",
     "index.html": "/index.html",
     "static/css/2.eca2297d.chunk.css.map": "/static/css/2.eca2297d.chunk.css.map",
-    "static/js/2.033b5b17.chunk.js.LICENSE.txt": "/static/js/2.033b5b17.chunk.js.LICENSE.txt",
+    "static/js/2.7002d9eb.chunk.js.LICENSE.txt": "/static/js/2.7002d9eb.chunk.js.LICENSE.txt",
     "static/media/avatar.png": "/static/media/avatar.a7cc3f54.png",
     "static/media/boe.227e0662.png": "/static/media/boe.227e0662.png",
     "static/media/main-background.jpg": "/static/media/main-background.71296bf1.jpg",
-    "static/media/roomLondon.77f0b267.jpg": "/static/media/roomLondon.77f0b267.jpg",
-    "static/media/roomMaldives.551a0664.png": "/static/media/roomMaldives.551a0664.png"
+    "static/media/maldivesEight.28a3ae5f.jpeg": "/static/media/maldivesEight.28a3ae5f.jpeg",
+    "static/media/maldivesEleven.551a0664.png": "/static/media/maldivesEleven.551a0664.png",
+    "static/media/maldivesFive.a002c516.png": "/static/media/maldivesFive.a002c516.png",
+    "static/media/maldivesFour.3bb3d4c4.png": "/static/media/maldivesFour.3bb3d4c4.png",
+    "static/media/maldivesNine.1831383d.jpeg": "/static/media/maldivesNine.1831383d.jpeg",
+    "static/media/maldivesOne.768db586.png": "/static/media/maldivesOne.768db586.png",
+    "static/media/maldivesSeven.0e18033a.jpeg": "/static/media/maldivesSeven.0e18033a.jpeg",
+    "static/media/maldivesSix.dc603b7c.png": "/static/media/maldivesSix.dc603b7c.png",
+    "static/media/maldivesTen.0ca5a710.jpg": "/static/media/maldivesTen.0ca5a710.jpg",
+    "static/media/maldivesThree.15787fff.png": "/static/media/maldivesThree.15787fff.png",
+    "static/media/maldivesTwelve.a97e1955.jpg": "/static/media/maldivesTwelve.a97e1955.jpg",
+    "static/media/maldivesTwo.eb8f5915.png": "/static/media/maldivesTwo.eb8f5915.png",
+    "static/media/roomLondon.77f0b267.jpg": "/static/media/roomLondon.77f0b267.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.09f1f2d2.js",
     "static/css/2.eca2297d.chunk.css",
-    "static/js/2.033b5b17.chunk.js",
-    "static/js/main.0013ac21.chunk.js"
+    "static/js/2.7002d9eb.chunk.js",
+    "static/js/main.4f582392.chunk.js"
   ]
 }
