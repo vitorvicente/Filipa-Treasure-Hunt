@@ -1,12 +1,13 @@
 import React from "react";
 
 import { Button, Image, Col, Row, Container } from "react-bootstrap";
+import SimpleImageSlider from "react-simple-image-slider";
 
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 
-import roomMaldives from "../assets/imgs/roomMaldives.png";
 import roomLondon from "../assets/imgs/roomLondon.jpg";
+import { slideshow } from "../assets/imgs/slideshow";
 
 const Details = ({ localConfig, changeStage, changeLocalConfig }) => {
   let Display = () => <PageOne changeLocalConfig={ changeLocalConfig } />;
@@ -229,8 +230,16 @@ const PageThree = () => (
         <h5 style={ { textIndent: "10%" } }> . . . . . . </h5>
       </Col>
       <Col>
-        <Image style={ { borderRadius: "10px", maxWidth: "100%" } }
-               src={ roomMaldives } />
+        <SimpleImageSlider
+          width={700}
+          height={400}
+          images={slideshow}
+          showBullets={true}
+          showNavs={true}
+          slideDuration={2}
+          loop={true}
+          autoPlay={true}
+        />
       </Col>
     </Row>
 
