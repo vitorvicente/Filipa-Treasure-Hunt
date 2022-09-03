@@ -7,13 +7,23 @@ import Footer from "../../components/Footer";
 
 import { Letter } from "../Styles";
 
-const moveEncryptStage = (curStage, changeLocalConfig) => {
+const moveEncryptStage = (curStage, hasMovedOn, changeLocalConfig) => {
   switch (curStage) {
     case "one":
-      changeLocalConfig("localEncryptStage", "two");
+      if (hasMovedOn[0]) {
+        changeLocalConfig("localEncryptStage", "two");
+      } else {
+        changeLocalConfig("localEncryptStage", "one");
+      }
       break;
     case "two":
-      changeLocalConfig("localEncryptStage", "three");
+      if (hasMovedOn[1]) {
+        changeLocalConfig("localEncryptStage", "three");
+      } else {
+        changeLocalConfig("localEncryptStage", "two");
+      }
+      break;
+    case "three":
       break;
     default:
       changeLocalConfig("localEncryptStage", "one");
@@ -23,7 +33,7 @@ const moveEncryptStage = (curStage, changeLocalConfig) => {
   changeLocalConfig("localStage", "decrypt");
 }
 
-export const LocationClueTextOne = ({ changeLocalConfig, hasReadEverything, curStage }) => ( <>
+export const LocationClueTextOne = ({ changeLocalConfig, hasReadEverything, curStage, hasMovedOn }) => ( <>
   <Header />
 
   <Container style={ { minHeight: "50vh", textAlign: "center" } }>
@@ -54,7 +64,7 @@ export const LocationClueTextOne = ({ changeLocalConfig, hasReadEverything, curS
     <Row>
       { hasReadEverything && <Col>
         <Button variant="danger"
-                onClick={ () => moveEncryptStage(curStage, changeLocalConfig) }>
+                onClick={ () => moveEncryptStage(curStage, hasMovedOn, changeLocalConfig) }>
           <h3>Attempt to Decrypt</h3>
         </Button>
       </Col> }
@@ -70,7 +80,7 @@ export const LocationClueTextOne = ({ changeLocalConfig, hasReadEverything, curS
   <Footer />
 </> );
 
-export const LocationClueTextTwo = ({ changeLocalConfig, hasReadEverything, curStage }) => ( <>
+export const LocationClueTextTwo = ({ changeLocalConfig, hasReadEverything, curStage, hasMovedOn }) => ( <>
   <Header />
 
   <Container style={ { minHeight: "50vh" } }>
@@ -99,7 +109,7 @@ export const LocationClueTextTwo = ({ changeLocalConfig, hasReadEverything, curS
       </Col>
       { hasReadEverything && <Col>
         <Button variant="danger"
-                onClick={ () => moveEncryptStage(curStage, changeLocalConfig) }>
+                onClick={ () => moveEncryptStage(curStage, hasMovedOn, changeLocalConfig) }>
           <h3>Attempt to Decrypt</h3>
         </Button>
       </Col> }
@@ -118,7 +128,7 @@ export const LocationClueTextTwo = ({ changeLocalConfig, hasReadEverything, curS
   <Footer />
 </> );
 
-export const LocationClueTextThree = ({ changeLocalConfig, hasReadEverything, hasMovedOn, curStage }) => ( <>
+export const LocationClueTextThree = ({ changeLocalConfig, hasReadEverything, curStage, hasMovedOn }) => ( <>
   <Header />
 
   <Container style={ { minHeight: "50vh", textAlign: "center" } }>
@@ -154,11 +164,11 @@ export const LocationClueTextThree = ({ changeLocalConfig, hasReadEverything, ha
       </Col>
       { hasReadEverything && <Col>
         <Button variant="danger"
-                onClick={ () => moveEncryptStage(curStage, changeLocalConfig) }>
+                onClick={ () => moveEncryptStage(curStage, hasMovedOn, changeLocalConfig) }>
           <h3>Attempt to Decrypt</h3>
         </Button>
       </Col> }
-      { hasMovedOn && <Col>
+      { hasMovedOn[0] && <Col>
         <Button variant="danger"
                 onClick={ () => changeLocalConfig("localReadingStage", "four") }>
           <h3>Next Page</h3>
@@ -170,7 +180,7 @@ export const LocationClueTextThree = ({ changeLocalConfig, hasReadEverything, ha
   <Footer />
 </> );
 
-export const LocationClueTextFour = ({ changeLocalConfig, hasMovedOn, curStage }) => ( <>
+export const LocationClueTextFour = ({ changeLocalConfig, curStage, hasMovedOn }) => ( <>
   <Header />
 
   <Container style={ { minHeight: "50vh", textAlign: "center" } }>
@@ -202,11 +212,11 @@ export const LocationClueTextFour = ({ changeLocalConfig, hasMovedOn, curStage }
       </Col>
       <Col>
         <Button variant="danger"
-                onClick={ () => moveEncryptStage(curStage, changeLocalConfig) }>
+                onClick={ () => moveEncryptStage(curStage, hasMovedOn, changeLocalConfig) }>
           <h3>Attempt to Decrypt</h3>
         </Button>
       </Col>
-      { hasMovedOn && <Col>
+      { hasMovedOn[1] && <Col>
         <Button variant="danger"
                 onClick={ () => changeLocalConfig("localReadingStage", "five") }>
           <h3>Next Page</h3>
@@ -218,7 +228,7 @@ export const LocationClueTextFour = ({ changeLocalConfig, hasMovedOn, curStage }
   <Footer />
 </> );
 
-export const LocationClueTextFive = ({ changeLocalConfig, curStage }) => ( <>
+export const LocationClueTextFive = ({ changeLocalConfig, curStage, hasMovedOn }) => ( <>
   <Header />
 
   <Container style={ { minHeight: "50vh", textAlign: "center" } }>
@@ -255,7 +265,7 @@ export const LocationClueTextFive = ({ changeLocalConfig, curStage }) => ( <>
       </Col>
       <Col>
         <Button variant="danger"
-                onClick={ () => moveEncryptStage(curStage, changeLocalConfig) }>
+                onClick={ () => moveEncryptStage(curStage, hasMovedOn, changeLocalConfig) }>
           <h3>Attempt to Decrypt</h3>
         </Button>
       </Col>

@@ -37,23 +37,26 @@ const LocationClue = ({ localConfig, changeStage, changeLocalConfig }) => {
         return ( <LocationClueTextSix changeStage={ changeStage } /> );
       case "five":
         return ( <LocationClueTextFive changeLocalConfig={ changeLocalConfig }
-                                       curStage={ localConfig["localEncryptStage"] } /> );
+                                       curStage={ localConfig["localEncryptStage"] }
+                                       hasMovedOn={ localConfig["hasMovedOn"] } /> );
       case "four":
         return ( <LocationClueTextFour changeLocalConfig={ changeLocalConfig }
                                        curStage={ localConfig["localEncryptStage"] }
-                                       hasMovedOn={ localConfig["hasMovedOn"][1] } /> );
+                                       hasMovedOn={ localConfig["hasMovedOn"] } /> );
       case "three":
         return ( <LocationClueTextThree changeLocalConfig={ changeLocalConfig }
                                         curStage={ localConfig["localEncryptStage"] }
-                                        hasMovedOn={ localConfig["hasMovedOn"][0] }
+                                        hasMovedOn={ localConfig["hasMovedOn"] }
                                         hasReadEverything={ localConfig["hasReadEverything"] } /> );
       case "two":
         return ( <LocationClueTextTwo changeLocalConfig={ changeLocalConfig }
                                       curStage={ localConfig["localEncryptStage"] }
+                                      hasMovedOn={ localConfig["hasMovedOn"] }
                                       hasReadEverything={ localConfig["hasReadEverything"] } /> );
       default:
         return ( <LocationClueTextOne changeLocalConfig={ changeLocalConfig }
                                       curStage={ localConfig["localEncryptStage"] }
+                                      hasMovedOn={ localConfig["hasMovedOn"] }
                                       hasReadEverything={ localConfig["hasReadEverything"] } /> );
     }
   }
