@@ -11,7 +11,7 @@ const PageBlocked = ({ date, isLast }) => ( <>
   <Container style={ { minHeight: "50vh", textAlign: "center" } }>
     { isLast ? <h1>See you in February...</h1> : <h1>It seems like you have progressed faster than expected!</h1>}
     <h3 style={ { paddingTop: "5%", paddingBottom: "5%" } }>
-      { isLast ? "The final Chapter of this journey will unlock on" : "This page will unblock on" } <strong>{ date.toUTCString() }</strong>.
+      { isLast ? "The Final Chapter of this journey will unlock on" : "This page will unblock on" } <strong>{ date.toUTCString() }</strong>.
     </h3>
     <Button variant="danger"
             onClick={ () => window.open("https://greenwichmeantime.com/time-zone/") }>

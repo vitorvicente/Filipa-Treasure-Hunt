@@ -13,6 +13,21 @@ import Footer from "../components/Footer";
 import Loader from "../components/Loader";
 
 const LocationClue = ({ localConfig, changeStage, changeLocalConfig }) => {
+  if (localConfig["locked"]) {
+    return (
+      <>
+        <Header />
+
+        <Container style={ { minHeight: "50vh", textAlign: "center" } }>
+          <h1> This page is blocked </h1>
+          <h3 style={ { paddingTop: "5%", paddingBottom: "5%" } }> The Final Clue must be solved together. </h3>
+        </Container>
+
+        <Footer />
+      </>
+    );
+  }
+
   if (localConfig["localStage"] === "decrypt") {
     return ( <DecryptBase changeLocalConfig={ changeLocalConfig }
                           localConfig={ localConfig } /> );
@@ -309,6 +324,10 @@ const DecryptWordle = ({ localConfig, changeLocalConfig }) => {
             </Row>
           </Form>
         </Row>
+      </Container>
+
+      <Container>
+        <p><em><strong>HINT:</strong> You're playing Wordle. </em></p>
       </Container>
     </>
   );
